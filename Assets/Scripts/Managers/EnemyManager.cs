@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
             OnDestroyEnemy,      // 彻底销毁时的逻辑
             collectionCheck: true, // 检查重复回收（安全检查）
             defaultCapacity: 1,  // 默认初始容量
-            maxSize: 1           // 池子最大容量
+            maxSize: 20           // 池子最大容量
         );
     }
     private void Start()
@@ -40,7 +40,7 @@ public class EnemyManager : MonoBehaviour
     }
     void enemyPoolGet()
     {
-        if (enemyPool.CountActive < 2)
+        if (enemyPool.CountActive < 3)
         {
             enemyPool.Get();
         }

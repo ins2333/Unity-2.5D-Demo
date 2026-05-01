@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private Animator playerAnimator;
     private PlayerMovement playerMovement;
     private PlayerShooting playerShooting;
+    private CapsuleCollider playerCapsule;
 
     public bool playerIsDead;
 
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         playerShooting = GetComponentInChildren<PlayerShooting>();
+        playerCapsule = GetComponent<CapsuleCollider>();
     }
     void Update()
     {
@@ -77,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
         
     }
 }

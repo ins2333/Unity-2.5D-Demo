@@ -15,15 +15,7 @@ public class SettingManager : MonoBehaviour
     public Slider VolumeSlider;
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
 
         bgMusic = BGMusic.GetComponent<AudioSource>();
 

@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     private ParticleSystem enemyParticles;
     private AudioSource enemySound;
     public AudioClip enemyDeathClip;
+    public AudioClip enemyHurtClip;
     private Animator enemyAnimator;
     private CapsuleCollider enemyCapsuleCollider;
     private EnemyAttack enemyAttack;
@@ -34,12 +35,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    void Update ()
-    {
-        if (IsSink) {
-            transform.Translate(-transform.up*0.3f*Time.deltaTime);
-        }
-    }
+    
     public void SetPool(ObjectPool<EnemyHealth> enemyPool) {
         _enemyPool = enemyPool;
     }
@@ -58,15 +54,20 @@ public class EnemyHealth : MonoBehaviour
         
     }
 
-    private void Death()
+    public void Death()
     {
+        if (IsDead) {
+            return;
+        }
+
+        //transform.Translate(-transform.up * Time.deltaTime);
         IsDead = true;
         enemyAnimator.SetTrigger("Death");
         enemySound.clip = enemyDeathClip;
         enemySound.Play();
         enemyAttack.enabled = false;
-        PlayerScoreManager.Instance.AddScore(EnemyDeathScore);
-
+        //PlayerScoreManager.Instance.AddScore(EnemyDeathScore);
+        
         StartCoroutine(RecoverToPool());
     }
 
@@ -88,11 +89,15 @@ public class EnemyHealth : MonoBehaviour
         enemyNavi.enabled = false;
         //Destroy(gameObject,2f);
     }
+
     void ResetEnemy() { 
+
         IsDead= false;
         IsSink = false;
         health = initialHealth;
 
+        enemySound.clip=enemyHurtClip;
+        //enemyDeathClip = enemySound.clip;
         enemyAttack.ResetAttackState();
         enemyCapsuleCollider.isTrigger = false;
         enemyAttack.enabled = true;
