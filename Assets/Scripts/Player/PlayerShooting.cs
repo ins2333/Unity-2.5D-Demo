@@ -72,7 +72,10 @@ public class PlayerShooting : MonoBehaviour
         {
             gunLine.SetPosition(1, shootHit.point);
             EnemyHealth enemyHealth =  shootHit.collider.GetComponent<EnemyHealth>();
-            enemyHealth.TakeDamage(PlayerDamage,shootHit.point);
+
+            if (enemyHealth != null) { 
+                enemyHealth.TakeDamage(PlayerDamage,shootHit.point);
+            }
         }
         else
         {

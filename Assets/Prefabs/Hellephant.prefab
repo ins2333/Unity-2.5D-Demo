@@ -4894,6 +4894,7 @@ GameObject:
   - component: {fileID: 11492370}
   - component: {fileID: 11470714}
   - component: {fileID: 11474866}
+  - component: {fileID: 3628198595245664019}
   m_Layer: 6
   m_Name: Hellephant
   m_TagString: Untagged
@@ -5155,6 +5156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   enemyDeathClip: {fileID: 8300000, guid: fce027b40770a44298a6f5a4233bfb04, type: 3}
+  enemyHurtClip: {fileID: 8300000, guid: 1d4840678e677424b8921716c72397ea, type: 3}
   IsDead: 0
   EnemyDeathScore: 15
 --- !u!114 &11474866
@@ -5169,6 +5171,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15099f5ee559584089d5851df572def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInRange: 0
+  EnemyAttackDamage: 10
+  AttackCooldown: 1.5
+--- !u!114 &3628198595245664019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aa3b0f19a7ac44ca9bf209955794af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
 --- !u!1 &109428
 GameObject:
   m_ObjectHideFlags: 0

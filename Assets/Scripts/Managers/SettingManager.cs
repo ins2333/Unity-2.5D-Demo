@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SettingManager : MonoBehaviour
 {
@@ -58,14 +59,10 @@ public class SettingManager : MonoBehaviour
         AudioListener.volume = value;
     }
 
+
     public void ExitGame()
     {
-        //ÍË³öÓÎÏ·
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #else    
-            Application.Quit();
-        #endif
+        SceneManager.LoadScene(0);
 
     }
 }

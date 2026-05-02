@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
     public AudioClip enemyHurtClip;
     private Animator enemyAnimator;
     private CapsuleCollider enemyCapsuleCollider;
+    private SphereCollider enemySphereCollider;
     private EnemyAttack enemyAttack;
     private NavMeshAgent enemyNavi;
     public bool IsDead;
@@ -30,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
         enemySound = GetComponentInChildren<AudioSource>();
         enemyAnimator = GetComponent<Animator>();
         enemyCapsuleCollider = GetComponent<CapsuleCollider>();
+        enemySphereCollider = GetComponent<SphereCollider>();
         enemyAttack = GetComponent<EnemyAttack>();
         enemyNavi = GetComponent<NavMeshAgent>();
     }
@@ -60,19 +62,28 @@ public class EnemyHealth : MonoBehaviour
             return;
         }
 
-        //transform.Translate(-transform.up * Time.deltaTime);
         IsDead = true;
         enemyAnimator.SetTrigger("Death");
         enemySound.clip = enemyDeathClip;
         enemySound.Play();
         enemyAttack.enabled = false;
-        //PlayerScoreManager.Instance.AddScore(EnemyDeathScore);
+        PlayerScoreManager.Instance.AddScore(EnemyDeathScore);
         
+        StartCoroutine(SinkAndRecover());
+    }
+    IEnumerator SinkAndRecover() {
+        float sinkTime = 2.5f;
+        float elapsed = 0f;
+        while (elapsed < sinkTime) {
+            transform.Translate(-transform.up * 0.3f * Time.deltaTime);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
         StartCoroutine(RecoverToPool());
     }
 
     IEnumerator RecoverToPool() {
-        yield return new WaitForSeconds(2f);
+        yield return null;
         if (_enemyPool != null)
         {
             ResetEnemy();
@@ -85,7 +96,10 @@ public class EnemyHealth : MonoBehaviour
     }
     public void StartSinking() { 
         IsSink = true;
-        enemyCapsuleCollider.isTrigger = true;
+        //enemyCapsuleCollider.isTrigger = true;//怪物死亡仍受子弹影响
+        enemyCapsuleCollider.enabled = false;
+        enemySphereCollider.enabled = false;
+
         enemyNavi.enabled = false;
         //Destroy(gameObject,2f);
     }
@@ -97,9 +111,10 @@ public class EnemyHealth : MonoBehaviour
         health = initialHealth;
 
         enemySound.clip=enemyHurtClip;
-        //enemyDeathClip = enemySound.clip;
         enemyAttack.ResetAttackState();
-        enemyCapsuleCollider.isTrigger = false;
+        //enemyCapsuleCollider.isTrigger = false;
+        enemyCapsuleCollider.enabled = true;
+        enemySphereCollider.enabled = true;
         enemyAttack.enabled = true;
         enemyNavi.enabled = true;
     }
