@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
     public Image PlayerHurtImage;
     public Color PlayerHurtColor = new Color(1f, 0f, 0f, 0f);
     private bool playerHurt;
-    void Awake()
+    private void Start()
     {
         playerSource = GetComponent<AudioSource>();
         playerAnimator = GetComponent<Animator>();
@@ -79,7 +79,6 @@ public class PlayerHealth : MonoBehaviour
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene(0);
-        
+        SceneManager.LoadScene(0);        
     }
 }

@@ -1,28 +1,26 @@
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
     public static SettingManager Instance;
 
-    public GameObject Panel;
-    private bool IsPanel;
+    public GameObject SettingPanel;
+    private bool IsSettingPanel;
+
+    public GameObject AskPanel;
+    private bool IsAskPanel;
 
     public GameObject BGMusic;
     private AudioSource bgMusic;
     private bool IsBGMusic = true;
 
     public Slider VolumeSlider;
-    private void Awake()
-    {
-        
-
-        bgMusic = BGMusic.GetComponent<AudioSource>();
-
-    }
     private void Start()
     {
+        bgMusic = BGMusic.GetComponent<AudioSource>();
         AudioListener.volume = VolumeSlider.value;
         VolumeSlider.onValueChanged.AddListener(OnChageVolume);
     }
@@ -37,10 +35,10 @@ public class SettingManager : MonoBehaviour
     public void PauseOnClick()
     {
         //UI面板展开
-        IsPanel = !IsPanel;
-        Panel.SetActive(IsPanel);
+        IsSettingPanel = !IsSettingPanel;
+        SettingPanel.SetActive(IsSettingPanel);
 
-        if (IsPanel)
+        if (IsSettingPanel)
         {
             Time.timeScale = 0f;
         }
@@ -60,9 +58,29 @@ public class SettingManager : MonoBehaviour
     }
 
 
-    public void ExitGame()
+    public void ExitMainMenu()
     {
-        SceneManager.LoadScene(0);
-
+        IsSettingPanel = false;
+        SettingPanel.SetActive(IsSettingPanel);
+        IsAskPanel = !IsAskPanel;
+        AskPanel.SetActive(IsAskPanel);
+    }
+    public void OnAskYesButtonClick() {
+        
+        if (IsAskPanel) {
+            int score = PlayerScoreManager.Instance.playerScore;
+            ConnectSQLite.Instance.SaveScore(score);
+            PlayerScoreManager.Instance.playerScore = 0;
+            //Debug.Log("分数清零");
+            SceneManager.LoadScene(0);
+        }
+    }
+    public void OnAskNoButtonClick() {
+        if (IsAskPanel) {
+            IsAskPanel = false;
+            AskPanel.SetActive(IsAskPanel);
+            IsSettingPanel = true;
+            SettingPanel.SetActive(IsSettingPanel);
+        }
     }
 }

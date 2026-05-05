@@ -20,6 +20,10 @@ public class PlayerShooting : MonoBehaviour
     public int PlayerDamage = 15;
     private void Awake()
     {
+        
+    }
+    private void Start()
+    {
         gunShoot = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
         gunLine = GetComponent<LineRenderer>();

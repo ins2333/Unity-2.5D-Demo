@@ -19,11 +19,12 @@ public class EnemyHealth : MonoBehaviour
     private EnemyAttack enemyAttack;
     private NavMeshAgent enemyNavi;
     public bool IsDead;
-    private bool IsSink;
+    //private bool IsSink;
 
     public int EnemyDeathScore;
     private ObjectPool<EnemyHealth> _enemyPool;
-    void Awake ()
+  
+    private void Start()
     {
         initialHealth = health;
 
@@ -37,7 +38,6 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    
     public void SetPool(ObjectPool<EnemyHealth> enemyPool) {
         _enemyPool = enemyPool;
     }
@@ -95,7 +95,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     public void StartSinking() { 
-        IsSink = true;
+        //IsSink = true;
         //enemyCapsuleCollider.isTrigger = true;//怪物死亡仍受子弹影响
         enemyCapsuleCollider.enabled = false;
         enemySphereCollider.enabled = false;
@@ -107,7 +107,7 @@ public class EnemyHealth : MonoBehaviour
     void ResetEnemy() { 
 
         IsDead= false;
-        IsSink = false;
+        //IsSink = false;
         health = initialHealth;
 
         enemySound.clip=enemyHurtClip;
