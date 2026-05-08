@@ -712,6 +712,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &344164640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1238,6 +1250,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100018, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1708,8 +1728,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1072448227}
-        m_TargetAssemblyTypeName: ConnectSQLite, Assembly-CSharp
+      - m_Target: {fileID: 1454721786}
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
         m_MethodName: OnSaveButtonClick
         m_Mode: 1
         m_Arguments:
@@ -2260,7 +2280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7cdb0a3f642cc4d8dfede0513246ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerScoreTextUI: {fileID: 0}
+  PlayerScoreTextUI: {fileID: 1851511666}
   playerScore: 0
 --- !u!4 &1072448226
 Transform:
@@ -2853,7 +2873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: -36}
+  m_AnchoredPosition: {x: 0, y: -36}
   m_SizeDelta: {x: 426.6511, y: 284.369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448621310
@@ -2947,6 +2967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SettingPanel: {fileID: 21047055}
   AskPanel: {fileID: 1448621308}
+  AskPanelText: {fileID: 1145283116}
   BGMusic: {fileID: 1006748452}
   VolumeSlider: {fileID: 1763165843}
 --- !u!1 &1508974253

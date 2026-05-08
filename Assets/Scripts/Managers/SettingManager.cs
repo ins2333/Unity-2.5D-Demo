@@ -10,8 +10,12 @@ public class SettingManager : MonoBehaviour
     public GameObject SettingPanel;
     private bool IsSettingPanel;
 
+    private bool IsSave;
+    private bool IsExit;
+
     public GameObject AskPanel;
     private bool IsAskPanel;
+    public Text AskPanelText;
 
     public GameObject BGMusic;
     private AudioSource bgMusic;
@@ -47,6 +51,18 @@ public class SettingManager : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
+
+    public void OnSaveButtonClick()
+    {
+        IsSave = true;
+        IsSettingPanel = false;
+        SettingPanel.SetActive(IsSettingPanel);
+        IsAskPanel = !IsAskPanel;
+        AskPanelText.text = "Confirm Save The Score?";
+        AskPanel.SetActive(IsAskPanel);
+    }
+
+
     public void SetBGMusic() {
         //背景音乐开关
         IsBGMusic = !IsBGMusic;
@@ -60,27 +76,48 @@ public class SettingManager : MonoBehaviour
 
     public void ExitMainMenu()
     {
+        IsExit = true;
         IsSettingPanel = false;
         SettingPanel.SetActive(IsSettingPanel);
         IsAskPanel = !IsAskPanel;
         AskPanel.SetActive(IsAskPanel);
     }
     public void OnAskYesButtonClick() {
-        
-        if (IsAskPanel) {
+
+        if (IsAskPanel && IsExit) {
             int score = PlayerScoreManager.Instance.playerScore;
             ConnectSQLite.Instance.SaveScore(score);
             PlayerScoreManager.Instance.playerScore = 0;
             //Debug.Log("分数清零");
             SceneManager.LoadScene(0);
-        }
-    }
-    public void OnAskNoButtonClick() {
-        if (IsAskPanel) {
+        } else if (IsAskPanel && IsSave) {
+
+            //存档按钮，调用实例方法
+            int score = PlayerScoreManager.Instance.playerScore;
+            ConnectSQLite.Instance.SaveScore(score);
+
             IsAskPanel = false;
             AskPanel.SetActive(IsAskPanel);
             IsSettingPanel = true;
             SettingPanel.SetActive(IsSettingPanel);
+            IsSave = false;
+        }
+    }
+    public void OnAskNoButtonClick() {
+        if (IsAskPanel && IsExit)
+        {
+            IsAskPanel = false;
+            AskPanel.SetActive(IsAskPanel);
+            IsSettingPanel = true;
+            SettingPanel.SetActive(IsSettingPanel);
+            IsExit = false;
+        }
+        else if (IsAskPanel && IsSave) {
+            IsAskPanel = false;
+            AskPanel.SetActive(IsAskPanel);
+            IsSettingPanel = true;
+            SettingPanel.SetActive(IsSettingPanel);
+            IsSave = false;
         }
     }
 }

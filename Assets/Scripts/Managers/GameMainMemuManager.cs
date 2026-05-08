@@ -9,10 +9,12 @@ public class GameMainMemuManager : MonoBehaviour
     public GameObject ButtonPanel;
     public GameObject NewStartPanel;
     public GameObject ExitPanel;
+    public GameObject LoadPanel;
 
     private bool IsButtonPanel = true;
     private bool IsNewStartPanel;
     private bool IsExitPanel;
+    private bool IsLoadPanel;
     private void Awake()
     {
         
@@ -56,10 +58,20 @@ public class GameMainMemuManager : MonoBehaviour
     }
 
 
-    public void OnLoadButtonClick() { 
-        
+    public void OnLoadButtonClick() {
+        IsButtonPanel = !IsButtonPanel;
+        ButtonPanel.SetActive(IsButtonPanel);
+        if (!IsButtonPanel)
+        {
+            IsLoadPanel = true;
+            LoadPanel.SetActive(IsLoadPanel);
+        }
     }
-
+    public void OnCloseLoadButtonClick() { 
+        IsButtonPanel = true;
+        ButtonPanel.SetActive(IsButtonPanel);
+        LoadPanel.SetActive(false);
+    }
     public void OnSettingButtonClick() {
         
     }
