@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    /// <summary>
+    /// 怪物攻击脚本，负责检测玩家是否在攻击范围内，使用碰撞器Trigger来判定范围，并在满足条件时对玩家造成伤害，使用冷却时间限制攻击频率
+    /// </summary>
     private GameObject player;
     private PlayerHealth playerHealth;
     private EnemyHealth enemyHealth;

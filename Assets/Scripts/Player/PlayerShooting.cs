@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-
+    /// <summary>
+    /// 玩家射击脚本，负责处理玩家的射击行为，包括发射射线、检测命中、播放射击效果等功能，使用时间间隔控制射击频率
+    /// </summary>
     float time = 0f;
     float dealtTime = 0.15f;
     float displayTime = 0.2f;

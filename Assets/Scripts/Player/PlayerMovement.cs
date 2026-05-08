@@ -2,6 +2,9 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    /// <summary>
+    /// 玩家移动脚本组件，负责处理玩家的移动、视角旋转和动画切换等功能，使用Rigidbody组件实现物理移动，通过射线检测实现视角旋转，并根据玩家的输入切换行走动画
+    /// </summary>
     //public LayerMask FloorMask;
     public float speed = 6f;
     private Rigidbody playerRigidbody; 

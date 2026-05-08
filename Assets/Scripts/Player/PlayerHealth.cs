@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    /// <summary>
+    /// 玩家血量脚本组件，负责处理玩家的血量管理、受伤反馈和死亡逻辑等功能，使用AudioSource组件播放受伤和死亡音效，通过Animator组件控制受伤和死亡动画，并在玩家死亡后禁用玩家的移动和射击功能，同时提供一个方法来重启游戏场景
+    /// </summary>
     private AudioSource playerSource;
     public AudioClip deathClip;
 

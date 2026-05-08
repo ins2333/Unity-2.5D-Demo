@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-
+    /// <summary>
+    /// 相机跟随脚本，负责使相机跟随玩家移动，保持一定的距离和角度，使用Lerp方法实现平滑过渡
+    /// </summary>
     //public GameObject player;
     private GameObject player;
     private Vector3 offset;

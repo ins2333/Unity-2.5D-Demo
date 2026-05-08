@@ -6,6 +6,9 @@ using Unity.VisualScripting;
 
 public class ConnectSQLite : MonoBehaviour
 {
+    /// <summary>
+    /// 数据库连接管理器，设置单例，负责处理与SQLite数据库的连接、数据的保存和读取等功能
+    /// </summary>
     public static ConnectSQLite Instance;
     private void Awake()
     {
@@ -34,10 +37,6 @@ public class ConnectSQLite : MonoBehaviour
         Connection.CreateTable<PlayerScore>();
     }
 
-    public void OnSaveButtonClick() {
-        int score = PlayerScoreManager.Instance.playerScore;
-        SaveScore(score);
-    }
 
     public void SaveScore(int score) {
         PlayerScore playerScore = new PlayerScore();
@@ -47,11 +46,20 @@ public class ConnectSQLite : MonoBehaviour
             playerScore.Date = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             Connection.Insert(playerScore);
-            //Debug.Log($"{score}分数保存成功");
+            Debug.Log($"{score}分数保存成功");
         }
         else { 
             //Debug.Log($"分数不能为0！");
         }
     }
 
+    public PlayerScore GetSaveById(int id)
+    {
+        return Connection.Find<PlayerScore>(id);
+    }
+
+    public List<PlayerScore> GetAllSaves() {
+        string sql = "SELECT * FROM PlayerScore ORDER BY Date DESC;";
+        return Connection.Query<PlayerScore>(sql);
+    }
 }

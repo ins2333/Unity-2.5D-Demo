@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-
+    /// <summary>
+    /// 怪物移动脚本，负责控制怪物的移动行为，使用NavMeshAgent组件实现寻路功能，使怪物能够智能地追踪玩家的位置，并在玩家死亡或怪物死亡时停止移动，使用Animator组件控制动画状态的切换
+    /// </summary>
     private GameObject player;
     private NavMeshAgent enemyNavi;
     private EnemyHealth enemyHealth;

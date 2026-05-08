@@ -6,6 +6,9 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
+    /// <summary>
+    /// 怪物血量脚本组件，负责处理怪物的血量管理、受伤反馈和死亡逻辑等功能，使用AudioSource组件播放受伤和死亡音效，通过Animator组件控制受伤和死亡动画，并在怪物死亡后禁用怪物的攻击和导航功能，同时提供一个方法来重置怪物状态以便对象池回收
+    /// </summary>
     public int health = 100;
     private int initialHealth;
 
@@ -18,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
     private SphereCollider enemySphereCollider;
     private EnemyAttack enemyAttack;
     private NavMeshAgent enemyNavi;
+
     public bool IsDead;
     //private bool IsSink;
 
@@ -43,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public void TakeDamage(int amount,Vector3 hitPoint) {
+        //血量扣除及音效和粒子
         if (IsDead) {
             return;
         }
@@ -58,6 +63,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Death()
     {
+        //死亡逻辑并播放死亡动画和音效，禁用攻击和导航组件，并增加玩家分数，同时启动协程实现怪物下沉和回收，协同动画完整播放后回收
         if (IsDead) {
             return;
         }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    /// <summary>
+    /// 怪物AI脚本，基于枚举类型的FSM有限状态机，负责控制怪物的行为状态，包括巡逻、追逐、攻击和死亡，根据玩家的位置和状态切换不同的行为，使用枚举来定义状态，并在Update方法中根据当前状态执行相应的行为逻辑
+    /// </summary>
     private EnemyAttack EnemyAttack;
     private EnemyHealth EnemyHealth;
     private EnemyMovement EnemyMovement;
@@ -27,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime; 
-        if (timer >=0.2f)
+        if (timer >=0.2f)//每0.2秒更新一次状态和行为，避免每帧都进行判断，提高性能
         {
             UpdateState();
             timer = 0f;
