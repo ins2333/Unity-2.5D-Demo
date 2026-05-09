@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SettingManager : MonoBehaviour
 {
     /// <summary>
-    /// ÓÎÏ·ÄÚµÄÉèÖÃ¹ÜÀíÆ÷£¬¸ºÔğ´¦ÀíÓÎÏ·ÄÚµÄÉèÖÃÃæ°å¡¢´æµµ¡¢ÍË³öµÈ¹¦ÄÜ
+    /// æ¸¸æˆå†…è®¾ç½®ç®¡ç†å™¨ï¼Œè´Ÿè´£å¤„ç†æ¸¸æˆå†…è®¾ç½®é¢æ¿çš„æŒ‰é’®ç‚¹å‡»äº‹ä»¶ï¼Œæ§åˆ¶ä¸åŒé¢æ¿çš„æ˜¾ç¤ºä¸éšè—ï¼Œåœºæ™¯åˆ‡æ¢ã€è¯»å–æ•°æ®ç­‰
     /// </summary>
     public static SettingManager Instance;
 
@@ -41,7 +41,7 @@ public class SettingManager : MonoBehaviour
     }
     public void PauseOnClick()
     {
-        //UIÃæ°åÕ¹¿ª
+        //UIé¢æ¿å±•å¼€
         IsSettingPanel = !IsSettingPanel;
         SettingPanel.SetActive(IsSettingPanel);
 
@@ -54,14 +54,27 @@ public class SettingManager : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
-    public void SetBGMusic() {
-        //±³¾°ÒôÀÖ¿ª¹Ø
+
+    public void OnSaveButtonClick()
+    {
+        IsSave = true;
+        IsSettingPanel = false;
+        SettingPanel.SetActive(IsSettingPanel);
+        IsAskPanel = !IsAskPanel;
+        AskPanelText.text = "Confirm Save The Score?";
+        AskPanel.SetActive(IsAskPanel);
+    }
+
+
+    public void SetBGMusic()
+    {
+        //èƒŒæ™¯éŸ³ä¹å¼€å…³
         IsBGMusic = !IsBGMusic;
         bgMusic.enabled = IsBGMusic;
     }
 
-    public void OnChageVolume(float value){
-        //ÒôÁ¿µ÷½Ú
+    public void OnChageVolume(float value)
+    {
         AudioListener.volume = value;
     }
 
@@ -74,18 +87,39 @@ public class SettingManager : MonoBehaviour
         IsAskPanel = !IsAskPanel;
         AskPanel.SetActive(IsAskPanel);
     }
-    public void OnAskYesButtonClick() {
+    public void OnAskYesButtonClick()
+    {
 
-        if (IsAskPanel && IsExit) {
-            int score = PlayerScoreManager.Instance.playerScore;
-            ConnectSQLite.Instance.SaveScore(score);
-            PlayerScoreManager.Instance.playerScore = 0;
-            //Debug.Log("·ÖÊıÇåÁã");
+        if (IsAskPanel && IsExit)
+        {
             SceneManager.LoadScene(0);
         }
+        else if (IsAskPanel && IsSave)
+        {
+
+            //å­˜æ¡£æŒ‰é’®ï¼Œè°ƒç”¨å®ä¾‹æ–¹æ³•
+            int score = PlayerScoreManager.Instance.playerScore;
+            ConnectSQLite.Instance.SaveScore(score);
+
+            IsAskPanel = false;
+            AskPanel.SetActive(IsAskPanel);
+            IsSettingPanel = true;
+            SettingPanel.SetActive(IsSettingPanel);
+            IsSave = false;
+        }
     }
-    public void OnAskNoButtonClick() {
-        if (IsAskPanel) {
+    public void OnAskNoButtonClick()
+    {
+        if (IsAskPanel && IsExit)
+        {
+            IsAskPanel = false;
+            AskPanel.SetActive(IsAskPanel);
+            IsSettingPanel = true;
+            SettingPanel.SetActive(IsSettingPanel);
+            IsExit = false;
+        }
+        else if (IsAskPanel && IsSave)
+        {
             IsAskPanel = false;
             AskPanel.SetActive(IsAskPanel);
             IsSettingPanel = true;
