@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SettingManager : MonoBehaviour
 {
     /// <summary>
-    /// 游戏内的设置管理器，负责处理游戏内的设置面板、存档、退出等功能
+    /// 游戏内设置管理器，负责处理游戏内设置面板的按钮点击事件，控制不同面板的显示与隐藏，场景切换、读取数据等
     /// </summary>
     public static SettingManager Instance;
 
@@ -57,7 +57,6 @@ public class SettingManager : MonoBehaviour
 
     public void OnSaveButtonClick()
     {
-        //存档按钮，弹出确认面板
         IsSave = true;
         IsSettingPanel = false;
         SettingPanel.SetActive(IsSettingPanel);
@@ -67,14 +66,15 @@ public class SettingManager : MonoBehaviour
     }
 
 
-    public void SetBGMusic() {
+    public void SetBGMusic()
+    {
         //背景音乐开关
         IsBGMusic = !IsBGMusic;
         bgMusic.enabled = IsBGMusic;
     }
 
-    public void OnChageVolume(float value){
-        //音量调节
+    public void OnChageVolume(float value)
+    {
         AudioListener.volume = value;
     }
 
@@ -87,17 +87,21 @@ public class SettingManager : MonoBehaviour
         IsAskPanel = !IsAskPanel;
         AskPanel.SetActive(IsAskPanel);
     }
-    public void OnAskYesButtonClick() {
+    public void OnAskYesButtonClick()
+    {
 
-        if (IsAskPanel && IsExit) {
+        if (IsAskPanel && IsExit)
+        {
             int score = PlayerScoreManager.Instance.playerScore;
             ConnectSQLite.Instance.SaveScore(score);
             PlayerScoreManager.Instance.playerScore = 0;
             //Debug.Log("分数清零");
             SceneManager.LoadScene(0);
-        } else if (IsAskPanel && IsSave) {
+        }
+        else if (IsAskPanel && IsSave)
+        {
 
-            //存档按钮，调用数据库实例方法存档数据
+            //存档按钮，调用实例方法
             int score = PlayerScoreManager.Instance.playerScore;
             ConnectSQLite.Instance.SaveScore(score);
 
@@ -108,8 +112,8 @@ public class SettingManager : MonoBehaviour
             IsSave = false;
         }
     }
-    public void OnAskNoButtonClick() {
-        //点击否，返回设置面板
+    public void OnAskNoButtonClick()
+    {
         if (IsAskPanel && IsExit)
         {
             IsAskPanel = false;
@@ -118,7 +122,8 @@ public class SettingManager : MonoBehaviour
             SettingPanel.SetActive(IsSettingPanel);
             IsExit = false;
         }
-        else if (IsAskPanel && IsSave) {
+        else if (IsAskPanel && IsSave)
+        {
             IsAskPanel = false;
             AskPanel.SetActive(IsAskPanel);
             IsSettingPanel = true;
