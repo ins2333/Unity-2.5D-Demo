@@ -54,19 +54,6 @@ public class SettingManager : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
-
-    public void OnSaveButtonClick()
-    {
-        //存档按钮，弹出确认面板
-        IsSave = true;
-        IsSettingPanel = false;
-        SettingPanel.SetActive(IsSettingPanel);
-        IsAskPanel = !IsAskPanel;
-        AskPanelText.text = "Confirm Save The Score?";
-        AskPanel.SetActive(IsAskPanel);
-    }
-
-
     public void SetBGMusic() {
         //背景音乐开关
         IsBGMusic = !IsBGMusic;
@@ -95,30 +82,10 @@ public class SettingManager : MonoBehaviour
             PlayerScoreManager.Instance.playerScore = 0;
             //Debug.Log("分数清零");
             SceneManager.LoadScene(0);
-        } else if (IsAskPanel && IsSave) {
-
-            //存档按钮，调用数据库实例方法存档数据
-            int score = PlayerScoreManager.Instance.playerScore;
-            ConnectSQLite.Instance.SaveScore(score);
-
-            IsAskPanel = false;
-            AskPanel.SetActive(IsAskPanel);
-            IsSettingPanel = true;
-            SettingPanel.SetActive(IsSettingPanel);
-            IsSave = false;
         }
     }
     public void OnAskNoButtonClick() {
-        //点击否，返回设置面板
-        if (IsAskPanel && IsExit)
-        {
-            IsAskPanel = false;
-            AskPanel.SetActive(IsAskPanel);
-            IsSettingPanel = true;
-            SettingPanel.SetActive(IsSettingPanel);
-            IsExit = false;
-        }
-        else if (IsAskPanel && IsSave) {
+        if (IsAskPanel) {
             IsAskPanel = false;
             AskPanel.SetActive(IsAskPanel);
             IsSettingPanel = true;
