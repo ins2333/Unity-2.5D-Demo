@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 445990102}
   - component: {fileID: 445990101}
   m_Layer: 5
-  m_Name: ConfirmButton
+  m_Name: YesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -856,8 +856,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1236867396}
-        m_TargetAssemblyTypeName: GameOptionMemuManager, Assembly-CSharp
-        m_MethodName: OnConfirmButtonClick
+        m_TargetAssemblyTypeName: GameMainMemuManager, Assembly-CSharp
+        m_MethodName: OnYesButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1013,7 +1013,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4fff99673a41e24439d527ad0bd6b569, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.704
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1280,7 +1280,7 @@ GameObject:
   - component: {fileID: 656115337}
   - component: {fileID: 656115336}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: NoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1351,8 +1351,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1236867396}
-        m_TargetAssemblyTypeName: GameOptionMemuManager, Assembly-CSharp
-        m_MethodName: OnBackButtonClick
+        m_TargetAssemblyTypeName: GameMainMemuManager, Assembly-CSharp
+        m_MethodName: OnNoButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2380,7 +2380,7 @@ GameObject:
   - component: {fileID: 1132189890}
   - component: {fileID: 1132189889}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: NoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2451,8 +2451,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1236867396}
-        m_TargetAssemblyTypeName: GameOptionMemuManager, Assembly-CSharp
-        m_MethodName: OnBackButtonClick
+        m_TargetAssemblyTypeName: GameMainMemuManager, Assembly-CSharp
+        m_MethodName: OnNoButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3686,7 +3686,7 @@ GameObject:
   - component: {fileID: 1733834392}
   - component: {fileID: 1733834391}
   m_Layer: 5
-  m_Name: ConfirmButton
+  m_Name: YesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3757,8 +3757,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1236867396}
-        m_TargetAssemblyTypeName: GameOptionMemuManager, Assembly-CSharp
-        m_MethodName: OnConfirmButtonClick
+        m_TargetAssemblyTypeName: GameMainMemuManager, Assembly-CSharp
+        m_MethodName: OnYesButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

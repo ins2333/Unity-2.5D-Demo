@@ -31,9 +31,10 @@ public class GameMainMemuManager : MonoBehaviour
         }
         
     }
-    public void OnConfirmButtonClick() {
+    public void OnYesButtonClick() {
         if (IsNewStartPanel)
         {
+            PlayerScoreManager.Instance.playerScore = 0;
             SceneManager.LoadScene(1);
         } else if (IsExitPanel) {
             #if  UNITY_EDITOR
@@ -45,7 +46,7 @@ public class GameMainMemuManager : MonoBehaviour
     }
 
 
-    public void OnBackButtonClick() {
+    public void OnNoButtonClick() {
         if (IsNewStartPanel) {
             IsButtonPanel = true;
             IsNewStartPanel = false;

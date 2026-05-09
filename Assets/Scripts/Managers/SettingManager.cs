@@ -92,10 +92,6 @@ public class SettingManager : MonoBehaviour
 
         if (IsAskPanel && IsExit)
         {
-            int score = PlayerScoreManager.Instance.playerScore;
-            ConnectSQLite.Instance.SaveScore(score);
-            PlayerScoreManager.Instance.playerScore = 0;
-            //Debug.Log("∑÷ ˝«Â¡„");
             SceneManager.LoadScene(0);
         }
         else if (IsAskPanel && IsSave)

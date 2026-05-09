@@ -54,6 +54,7 @@ public class SaveListManager : MonoBehaviour
             //Debug.Log($"加载存档 Id={id}, 分数={selected.Score}");
 
             SceneManager.LoadScene(1);
+            Time.timeScale = 1f;
             // 关闭存档面板
             gameObject.SetActive(false);
         }
