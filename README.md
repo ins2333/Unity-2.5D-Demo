@@ -25,16 +25,16 @@
 
 ## 📁 项目结构
 
-Assets/
-├── Scripts/
-│ ├── Camera/ # 相机跟随
-│ ├── Enemy/ # 敌人 AI、攻击、健康、移动（FSM + 对象池）
-│ ├── Managers/ # 游戏管理（分数、存档列表、主菜单、设置）
-│ ├── Player/ # 玩家移动、射击、健康
-│ └── SQLite/ # SQLite 连接与数据模型
-├── Prefabs/ # 预制体（敌人、存档条目等）
-├── Scenes/ # 场景（主菜单、游戏场景）
-└── StreamingAssets/ # 数据库文件
+- `Assets/`
+  - `Scripts/`
+    - `Camera/` - 相机跟随
+    - `Enemy/` - 敌人 AI、攻击、健康、移动（FSM + 对象池）
+    - `Managers/` - 游戏管理（分数、存档列表、主菜单、设置）
+    - `Player/` - 玩家移动、射击、健康
+    - `SQLite/` - SQLite 连接与数据模型
+  - `Prefabs/` - 预制体（敌人、存档条目等）
+  - `Scenes/` - 场景（主菜单、游戏场景）
+  - `StreamingAssets/` - 数据库文件
 
 
 ## 🛠️ 运行说明
