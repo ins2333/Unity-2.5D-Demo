@@ -36,7 +36,6 @@ Assets/
 ├── Scenes/ # 场景（主菜单、游戏场景）
 └── StreamingAssets/ # 数据库文件
 
-text
 
 ## 🛠️ 运行说明
 
