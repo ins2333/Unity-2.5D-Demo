@@ -29,6 +29,7 @@ markdown
 | **跨场景数据保持** | 使用 `DontDestroyOnLoad` 保证分数单例在场景切换时不丢失，并通过 `SceneManager.sceneLoaded` 事件动态绑定 UI |
 | **性能优化** | `EnemyAI` 中每 0.2 秒更新一次状态，避免每帧计算；对象池降低内存开销 |
 
+markdown
 ## 📁 项目结构
 
 Assets/
@@ -41,6 +42,7 @@ Assets/
 ├── Prefabs/ # 预制体（敌人、存档条目等）
 ├── Scenes/ # 场景（主菜单、游戏场景）
 └── StreamingAssets/ # 数据库文件
+
 text
 
 
