@@ -1,12 +1,6 @@
-markdown
-
 # 2.5D 射击游戏 Demo
 
 > 这是一个完整的 2.5D 射击游戏示例项目，展示了包括怪物 AI（有限状态机）、对象池管理、SQLite 数据持久化、UI 系统等核心功能。该项目由我独立开发，用于求职作品展示。
-
-## 📷 演示视频
-
-
 
 ## 🎮 游戏玩法
 
@@ -29,9 +23,7 @@ markdown
 | **跨场景数据保持** | 使用 `DontDestroyOnLoad` 保证分数单例在场景切换时不丢失，并通过 `SceneManager.sceneLoaded` 事件动态绑定 UI |
 | **性能优化** | `EnemyAI` 中每 0.2 秒更新一次状态，避免每帧计算；对象池降低内存开销 |
 
-markdown
 ## 📁 项目结构
-
 Assets/
 ├── Scripts/
 │ ├── Camera/ # 相机跟随
@@ -43,23 +35,16 @@ Assets/
 ├── Scenes/ # 场景（主菜单、游戏场景）
 └── StreamingAssets/ # 数据库文件
 
-text
-
-
 ## 🛠️ 运行说明
 
 1. **环境要求**：Unity 2022.3.22f1 或更高版本（支持 .NET 4.x）
-2. **打开项目**：先搭建SQLite环境，将仓库克隆到本地，用 Unity Hub 打开项目文件夹
+2. **打开项目**：项目已集成 `SQLite4Unity3d` 插件，打开后 Unity 会自动加载依赖，无需额外配置。数据库文件会在首次运行时自动创建在 `Application.persistentDataPath` 路径下。
 3. **首次运行**：进入游戏场景后会自动创建数据库文件（位于 `Application.persistentDataPath`）
 4. **操作指南**：
    - 移动：WASD 键
    - 转向：鼠标移动（指向地面位置）
    - 射击：鼠标左键
    - 设置菜单：Esc 键（游戏内）
-
-## 📥 下载试玩
-
-
 
 ## 📞 联系我
 
