@@ -24,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
     public int health = 100;
 
     public Text PlayerHealthUI;
+    public GameObject DeathPanel;
 
     public Image PlayerHurtImage;
     public Color PlayerHurtColor = new Color(1f, 0f, 0f, 0f);
@@ -80,8 +81,38 @@ public class PlayerHealth : MonoBehaviour
 
         playerAnimator.SetTrigger("Death");
     }
+    IEnumerator RestartLevelDelay()
+    {
+        float totalDelay = 5f;          
+        float panelStartTime = 1f;      
+        float elapsed = 0f;
+        bool panelActive = false;
+
+        float riseSpeed = 2f;
+
+        while (elapsed < totalDelay)
+        {
+            elapsed += Time.deltaTime;
+
+            if (!panelActive && elapsed >= panelStartTime)
+            {
+                DeathPanel.SetActive(true);
+                panelActive = true;
+            }
+
+            transform.Translate(Vector3.up * riseSpeed * Time.deltaTime);
+
+            yield return null;  
+        }
+
+        if (panelActive)
+        {
+            DeathPanel.SetActive(false);
+        }
+        SceneManager.LoadScene(0);
+    }
     public void RestartLevel()
     {
-        SceneManager.LoadScene(0);        
+        StartCoroutine(RestartLevelDelay());
     }
 }
