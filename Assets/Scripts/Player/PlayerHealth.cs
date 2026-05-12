@@ -109,7 +109,7 @@ public class PlayerHealth : MonoBehaviour
         {
             DeathPanel.SetActive(false);
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);        
     }
     public void RestartLevel()
     {

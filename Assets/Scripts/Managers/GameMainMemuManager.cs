@@ -36,6 +36,7 @@ public class GameMainMemuManager : MonoBehaviour
         {
             PlayerScoreManager.Instance.playerScore = 0;
             SceneManager.LoadScene(1);
+            Time.timeScale = 1f;
         } else if (IsExitPanel) {
             #if  UNITY_EDITOR
                  UnityEditor.EditorApplication.isPlaying = false;

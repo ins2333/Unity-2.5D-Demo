@@ -10,10 +10,6 @@ public class SaveListManager : MonoBehaviour
     /// </summary>
     public GameObject SavesPrefab;
     public Transform ContentParent;
-    void Start()
-    {
-        
-    }
 
     public void ShowSaveList() {
         foreach (Transform child in ContentParent) { 
