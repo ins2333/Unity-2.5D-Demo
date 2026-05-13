@@ -22,7 +22,7 @@
 | **对象池** | `EnemyManager` 使用 Unity 内建 `ObjectPool` 管理敌人的创建、回收和复用，减少 GC |
 | **SQLite 数据持久化** | 集成 `SQLite4Unity3d` 插件，实现玩家分数的保存与读取；支持多条存档记录，按时间排序 |
 | **动态 UI 生成** | `SaveListManager` 根据数据库记录动态生成存档按钮，点击后加载对应分数并切换场景 |
-| **UI 系统**: 完整的 UGUI 框架，包含主菜单、ESC 暂停界面、血量/分数实时 HUD |
+| **UI 系统** | 完整的 UGUI 框架，包含主菜单、ESC 暂停界面、血量/分数实时 HUD |
 | **单例模式** | `PlayerScoreManager`、`ConnectSQLite`、`SettingManager` 确保全局唯一访问点 |
 | **NavMesh 导航** | 敌人使用 `NavMeshAgent` 追踪玩家，移动流畅 |
 | **跨场景数据保持** | 使用 `DontDestroyOnLoad` 保证分数单例在场景切换时不丢失，并通过 `SceneManager.sceneLoaded` 事件动态绑定 UI |
